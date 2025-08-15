@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images:convert": "node ./scripts/convert-to-jpg.mjs",
+    "images:optimize": "node ./scripts/optimize-images.mjs",
+    "images:prepare": "npm run images:convert && cp src/assets/xibao/*.jpg public/images/ && npm run images:optimize && vite build",
+    "images:update-list": "echo 'Manually update public/images-list.json with the current image files'"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
-    "vue": "^3.5.18"
+    "vue": "^3.5.18",
+    "vue-router": "4.5.1"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
